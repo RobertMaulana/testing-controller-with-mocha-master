@@ -1,28 +1,26 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const should = chai.should();
-const expect = chai.expect;
-const User = require('../models/user')
-const mongoose = require('mongoose')
-
+const chai      = require('chai'),
+      chaiHttp  = require('chai-http'),
+      should    = chai.should(),
+      expect    = chai.expect,
+      User      = require('../models/user'),
+      mongoose  = require('mongoose');
 
 chai.use(chaiHttp);
 
-describe('Books', () => {
+describe('User testing ', () => {
 
-})
-describe('Testing for User ', function() {
-
-  it('Should Create new User', function(done) {
+  it('Should Create new User', (done) => {
   chai.request('http://localhost:3000')
   .post('/users')
-  .send({ name : 'Maulana', email : 'maulana.robert.mr@gmail.com' })
-  .end(function (err, res) {
+  .send({
+    name : 'Maulana',
+    email : 'maulana.robert.mr@gmail.com'
+  })
+  .end((err, res) => {
     if (err){
       done(err)
     }else {
       res.should.have.status(200)
-      console.log(res.body.user);
       expect(res.body).to.have.property('success').and.equal(true)
       expect(res.body.user.name).and.equal('Maulana')
       expect(res.body.user.email).and.equal('maulana.robert.mr@gmail.com')
@@ -31,17 +29,16 @@ describe('Testing for User ', function() {
     })
   })
 
-  it('Should Delete a user and its true', function(done){
+  it('Should Delete a user and its true', (done) => {
     User.create({
       name : 'testing',
       email : 'maulana.robert.mr@gmail.com'},
-     function (err, user) {
+      (err, user) => {
       if (err){
         console.log('error cuy');
         done(err)
       }
       else{
-        console.log(user._id);
         chai.request('http://localhost:3000')
             .delete('/users/' + user._id)
             .end((err, res) => {
@@ -53,10 +50,10 @@ describe('Testing for User ', function() {
     })
   })
 
-  it('Should GET All of User', function(done) {
+  it('Should get all User', (done) => {
   chai.request('http://localhost:3000')
   .get('/users')
-  .end(function (err, res) {
+  .end((err, res) => {
       if(err){
         done(err)
       }else {
@@ -67,13 +64,13 @@ describe('Testing for User ', function() {
     })
   })
 
-  it('Should update a user', function(done){
+  it('Should update a user', (done) => {
     User.create({
       name : 'hhhhhhh',
       email : 'hmmm@gmail.com'},
-     function (err, user) {
+     (err, user) => {
       if (err){
-        console.log('error cuy');
+        console.log('hahahaha... error!');
         done(err)
       }
       else{

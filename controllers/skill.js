@@ -1,15 +1,14 @@
 const Skill = require('../models/skill')
 
-
 module.exports = {
-  create : function(req, res){
+  create : (req, res) => {
     Skill.create(req.body, (err, skill) => {
       if (err) res.json({success : false, msg : err.message})
       else
         res.json({success : true, msg : 'adding some skill'})
     })
   },
-  delete: function(req, res){
+  delete: (req, res) => {
     Skill.findByIdAndRemove(req.params.id)
     .exec((err, foods) => {
       if (err)
@@ -19,14 +18,14 @@ module.exports = {
 
     })
   },
-  update : function(req, res){
+  update : (req, res) => {
     Skill.findByIdAndUpdate(req.params.id,{$set : req.body},{new : true})
       .exec(( err, foods ) => {
         if (err) res.json({success : false, data : null})
         res.json({success : true, data : foods})
       })
   },
-  list : function(req, res) {
+  list : (req, res) => {
     Skill.find()
           .exec((err, data) => {
             if (err || data == null)

@@ -4,10 +4,10 @@ const Skill = require('../models/skill'),
 
 data.forEach(skill => {
   Skill.create({
-    name : 'makan'
+    name : 'test'
   }, function (err, skill) {
     if (err) console.log(err.message);
     else
-      console.log('sukses')
+      console.log('yesy')
   })
 })

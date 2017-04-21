@@ -10,7 +10,7 @@ data.forEach(user => {
    function (err, skill) {
     if (err) console.log(err);
     else
-      console.log('sukses')
+      console.log('yap')
   })
 })
 

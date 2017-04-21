@@ -1,9 +1,6 @@
-
-const mongoose = require('mongoose'),
+const mongoose        = require('mongoose'),
       uniqueValidator = require('mongoose-unique-validator'),
-      Schema = mongoose.Schema,
-
-
+      Schema           = mongoose.Schema,
 
       skillSchema = new Schema({
         name : {
@@ -12,7 +9,6 @@ const mongoose = require('mongoose'),
           unique: true
         }
       });
-
 
 const Skill = mongoose.model('Skill', skillSchema)
 
